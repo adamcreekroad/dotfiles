@@ -12,3 +12,6 @@ shopify/
 shopify-cli-kit-nodejs/
 wslu/
 yarn/
+
+# nvim
+nvim/plugin/packer_compiled.lua
