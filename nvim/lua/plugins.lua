@@ -147,6 +147,14 @@ return require("packer").startup(function(use)
 
   use("slim-template/vim-slim")
 
+  -- Comment
+  use({
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end,
+  })
+
   if packer_bootstrap then
     require('packer').sync()
   end

@@ -12,6 +12,9 @@ if themeStatus then
       Directory = { bold = true },
       ErrorMsg = { italic = true, bold = true }
     },
+    plugins = {
+      nvim_lsp = false,
+    },
     styles = {
       types = "NONE",
       methods = "NONE",
