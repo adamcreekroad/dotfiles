@@ -62,3 +62,15 @@ map("n", "<leader>T", "<CMD>TestFile<CR>")
 map("n", "<leader>a", "<CMD>TestSuite<CR>")
 map("n", "<leader>l", "<CMD>TestLast<CR>")
 map("n", "<leader>g", "<CMD>TestVisit<CR>")
+
+-- Toggle LSP diagnostics
+local _show_virtual_text = true
+map("n", "<leader>gv", function()
+  if _show_virtual_text then
+    vim.diagnostic.show(nil, nil, nil, { virtual_text = false })
+    _show_virtual_text = false
+  else
+    vim.diagnostic.show(nil, nil, nil, { virtual_text = true })
+    _show_virtual_text = true
+  end
+end, opts)
