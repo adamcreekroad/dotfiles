@@ -33,6 +33,14 @@ return require("packer").startup(function(use)
   use("rebelot/kanagawa.nvim")
   use("olimorris/onedarkpro.nvim")
 
+
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("ibl").setup()
+    end,
+  })
+
   -- Statusline
   use({
     "nvim-lualine/lualine.nvim",
