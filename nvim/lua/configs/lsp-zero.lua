@@ -1,4 +1,5 @@
 local lsp_zero = require('lsp-zero')
+local lspconfig = require('lspconfig')
 
 lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
@@ -18,14 +19,19 @@ require('mason-lspconfig').setup({
   handlers = {
     rust_analyzer = lsp_zero.noop,
     gopls = lsp_zero.noop,
-    ruby_lsp = lsp_zero.noop,
+    solargraph = lsp_zero.noop,
+    rubocop = lsp_zero.noop,
   }
 })
 
 
 ---- Default Configurations
 
-lsp_zero.setup_servers({ 'cssls', 'graphql', 'html', 'gopls', 'html', 'lua_ls', 'ruby_lsp', 'rust_analyzer', 'tsserver' })
+lsp_zero.setup_servers({ 'cssls', 'graphql', 'html', 'gopls', 'html', 'lua_ls', 'rust_analyzer', 'solargraph', 'tsserver' })
 
 
 ---- Custom Configurations
+
+lspconfig.rubocop.setup({
+  cmd = { 'bundle', 'exec', 'rubocop', '--lsp' }
+})
