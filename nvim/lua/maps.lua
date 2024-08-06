@@ -74,3 +74,6 @@ map("n", "<leader>gv", function()
     _show_virtual_text = true
   end
 end, opts)
+
+
+map("t", "<esc>", "<C-\\><C-n>")
