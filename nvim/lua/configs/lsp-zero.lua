@@ -27,11 +27,19 @@ require('mason-lspconfig').setup({
 
 ---- Default Configurations
 
-lsp_zero.setup_servers({ 'cssls', 'graphql', 'html', 'gopls', 'html', 'lua_ls', 'rust_analyzer', 'solargraph', 'tsserver' })
+lsp_zero.setup_servers({ 'cssls', 'graphql', 'html', 'gopls', 'html', 'lua_ls', 'rust_analyzer', 'tsserver' })
 
 
 ---- Custom Configurations
 
 lspconfig.rubocop.setup({
   cmd = { 'bundle', 'exec', 'rubocop', '--lsp' }
+})
+
+lspconfig.solargraph.setup({
+  settings = {
+    solargraph = {
+      diagnostics = false
+    }
+  }
 })
