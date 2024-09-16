@@ -15,7 +15,7 @@ lsp_zero.set_sign_icons({
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'cssls', 'graphql', 'html', 'lua_ls', 'tsserver' }, -- Exclude anything that needs the tool manually installed
+  ensure_installed = { 'cssls', 'graphql', 'html', 'lua_ls', 'ts_ls' }, -- Exclude anything that needs the tool manually installed
   handlers = {
     rust_analyzer = lsp_zero.noop,
     gopls = lsp_zero.noop,
@@ -27,7 +27,7 @@ require('mason-lspconfig').setup({
 
 ---- Default Configurations
 
-lsp_zero.setup_servers({ 'cssls', 'graphql', 'html', 'gopls', 'html', 'lua_ls', 'rust_analyzer', 'tsserver' })
+lsp_zero.setup_servers({ 'cssls', 'graphql', 'html', 'gopls', 'html', 'lua_ls', 'rust_analyzer', 'ts_ls' })
 
 
 ---- Custom Configurations
