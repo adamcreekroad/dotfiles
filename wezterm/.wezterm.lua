@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.color_scheme = 'OneHalfDark'
-config.font = wezterm.font 'CaskaydiaCove'
+config.font = wezterm.font 'CaskaydiaCoveNerdFont'
 config.font_size = 10.0
 
 
