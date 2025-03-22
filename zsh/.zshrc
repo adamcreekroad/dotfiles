@@ -33,18 +33,19 @@ export EDITOR=nvim
 # Compilation flags
 
 export RUBY_CONFIGURE_OPTS='--with-jemalloc --enable-yjit'
+export RUBY_YJIT_ENABLE='true'
 
 
 # Aliases
-alias config='/usr/bin/git --git-dir=/home/adam/.cfg/ --work-tree=/home/adam'
+
+alias g='git'
+alias be='bundle exec'
 
 
 # Eval
 
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
-
-eval $(ssh-agent)
 
 . "$HOME/.cargo/env"
 
