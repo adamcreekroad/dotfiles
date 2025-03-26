@@ -6,7 +6,12 @@ Collection of common configuration for my local development environment, so that
 
 All files are maintained in the repo, and symlinked where necessary into the home directory.
 
-Setup is as simple as running this script:
-```zsh
-./setup.sh
+To fun the full setup on a new machine:
+```shell-script
+./initial-setup.sh
+```
+
+To only run the symlinker:
+```shell-script
+./symlink.sh
 ```
