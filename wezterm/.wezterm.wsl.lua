@@ -1,4 +1,4 @@
-# https://wezterm.org/config/lua/general.html
+-- https://wezterm.org/config/lua/general.html
 
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
