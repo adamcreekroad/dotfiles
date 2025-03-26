@@ -8,10 +8,13 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
+config.default_domain = 'WSL:Ubuntu'
+
 -- For example, changing the color scheme:
 config.color_scheme = 'OneHalfDark'
-config.font = wezterm.font 'CaskaydiaCoveNerdFont'
-config.font_size = 10.0
+config.font = wezterm.font 'CaskaydiaCove Nerd Font'
+config.font_size = 9.0
+config.line_height = 1.0
 
 config.keys = {
   {
