@@ -8,7 +8,7 @@ ln -s $PWD/zsh/.zshrc $HOME/.zshrc
 # Windows itself.
 if which wslpath &> /dev/null; then
   win_home=$(wslpath "$(wslvar USERPROFILE)")
-  ln -s $PWD/wezterm/.wezterm.wsl.lua  $win_home/.wezterm.lua
+  cp -rf $PWD/wezterm/.wezterm.wsl.lua  $win_home/.wezterm.lua
 else
   ln -s $PWD/wezterm/.wezterm.lua $HOME/.wezterm.lua
 fi
