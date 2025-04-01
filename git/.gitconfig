@@ -1,0 +1,32 @@
+[include]
+  path = ~/.local.gitconfig
+
+[github]
+  user = adamcreekroad
+
+[init]
+  defaultBranch = main
+
+[core]
+  editor = nvim
+
+[web]
+  browser = ff
+
+[commit]
+  gpgsign = true
+
+[merge]
+  conflictstyle = diff3
+
+[alias]
+  s = status
+  b = branch
+  c = commit
+  am = commit --amend
+  amn = commit --amend --no-edit
+  co = checkout
+  ff = merge --ff-only
+  p = push
+  pf = push --force
+  pu = push -u origin HEAD

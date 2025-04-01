@@ -18,3 +18,5 @@ ln -s $PWD/mise/.default-go-packages $HOME/.default-go-packages
 
 mkdir -p $HOME/.config
 ln -s $PWD/nvim $HOME/.config/nvim
+
+ln -s $PWD/git/.gitconfig $HOME/.gitconfig
