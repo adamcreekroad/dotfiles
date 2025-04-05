@@ -20,13 +20,31 @@
   conflictstyle = diff3
 
 [alias]
-  s = status
+  a = add
+  aa = add --all
+
   b = branch
+
   c = commit
-  am = commit --amend
-  amn = commit --amend --no-edit
+  ca = commit --amend
+  can = commit --amend --no-edit
+
   co = checkout
+
+  d = diff
+  dc = diff --cached
+
+  f = fetch
+  fa = fetch --all
+
   ff = merge --ff-only
-  p = push
-  pf = push --force
-  pu = push -u origin HEAD
+
+  pl = pull
+  plff == pull --ff-only
+
+  pu = push
+  puf = push --force
+  puu = push -u origin HEAD
+
+  s = status -s
+
