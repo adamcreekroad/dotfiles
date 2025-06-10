@@ -1,6 +1,7 @@
 require("settings")
 require("plugins")
 require("maps")
+require("lsp")
 
 -- colorscheme config: onedarkpro
 local themeStatus, onedarkpro = pcall(require, "onedarkpro")
@@ -50,3 +51,9 @@ function rfs()
 end
 
 vim.api.nvim_set_keymap('n', '<leader>rfs', '<cmd>lua rfs()<cr>', {})
+
+-- Enable spellcheck
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*",
+  command = "setlocal spell spelllang=en_us",
+})
