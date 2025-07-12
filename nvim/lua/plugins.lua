@@ -31,7 +31,13 @@ return require("packer").startup(function(use)
 
   -- Colorschema
   use("rebelot/kanagawa.nvim")
-  use("olimorris/onedarkpro.nvim")
+  use({
+    "olimorris/onedarkpro.nvim",
+    config = function()
+      require("configs.onedarkpro")
+    end,
+  })
+  use("folke/tokyonight.nvim")
 
 
   use({
