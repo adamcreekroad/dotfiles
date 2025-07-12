@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# This is monkey patch to allow signing commits via the fugitive plugin for neovim.
+# See https://github.com/tpope/vim-fugitive/issues/1836 for more details.
+
+if [ -n "$FUGITIVE" ]; then
+  set -- --pinentry-mode loopback "$@"
+fi
+exec /usr/bin/gpg "$@"

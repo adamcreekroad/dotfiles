@@ -7,6 +7,19 @@ function link_file()
   fi
 }
 
+function link_files_in_dir()
+{
+  cd $1
+
+  for file in *; do
+    if [ ! -f "$2/$file" ]; then
+      ln -s $1/$file $2/$file
+    fi
+  done
+
+  cd -
+}
+
 function link_dir()
 {
   if [ ! -d "$2" ]; then
@@ -33,3 +46,6 @@ mkdir -p $HOME/.config
 link_dir $PWD/nvim $HOME/.config/nvim
 
 link_file $PWD/git/.gitconfig $HOME/.gitconfig
+
+# Needs sudo...
+# link_files_in_dir $PWD/bin /usr/local/bin
