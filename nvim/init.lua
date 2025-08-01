@@ -1,10 +1,11 @@
 require("settings")
 require("plugins")
 require("maps")
-
-vim.cmd("colorscheme tokyonight")
+require("lsp")
 
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+
+vim.cmd("colorscheme dracula")
 
 -- Add ruby magic comment to the top of the file, since rubocop won't autocorrect it
 function rfs()
@@ -16,3 +17,9 @@ function rfs()
 end
 
 vim.api.nvim_set_keymap('n', '<leader>rfs', '<cmd>lua rfs()<cr>', {})
+
+-- Enable spellcheck
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*",
+  command = "setlocal spell spelllang=en_us",
+})

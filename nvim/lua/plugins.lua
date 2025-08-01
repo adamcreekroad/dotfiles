@@ -1,10 +1,10 @@
 -- Auto reinstall
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-    vim.cmd [[packadd packer.nvim]]
+    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    vim.cmd([[packadd packer.nvim]])
     return true
   end
   return false
@@ -38,7 +38,7 @@ return require("packer").startup(function(use)
     end,
   })
   use("folke/tokyonight.nvim")
-
+  use("Mofiqul/dracula.nvim")
 
   use({
     "lukas-reineke/indent-blankline.nvim",
@@ -68,34 +68,13 @@ return require("packer").startup(function(use)
     end,
   })
 
-  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
+  -- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
   -- Telescope
   use({
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     requires = { { "nvim-lua/plenary.nvim" } },
-  })
-
-  -- LSP
-  use({
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    requires = {
-      --- Uncomment these if you want to manage LSP servers from neovim
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'L3MON4D3/LuaSnip' },
-    },
-    config = function()
-      require("configs/lsp-zero")
-    end,
   })
 
   -- File manager
@@ -151,7 +130,25 @@ return require("packer").startup(function(use)
   })
 
   -- Vim Test
-  use("vim-test/vim-test")
+  -- use({
+  --   "vim-test/vim-test",
+  --   config = function()
+  --     require("configs.vim-test")
+  --   end,
+  -- })
+  use({
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "olimorris/neotest-rspec",
+    },
+    config = function()
+      require("configs.neotest")
+    end,
+  })
 
   use("tpope/vim-rails")
 
@@ -163,13 +160,22 @@ return require("packer").startup(function(use)
 
   -- Comment
   use({
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     config = function()
-      require('Comment').setup()
+      require("Comment").setup()
     end,
   })
 
+  -- Folding
+  use({
+    "kevinhwang91/nvim-ufo",
+    config = function()
+      require("configs.ufo")
+    end,
+    requires = "kevinhwang91/promise-async",
+  })
+
   if packer_bootstrap then
-    require('packer').sync()
+    require("packer").sync()
   end
 end)

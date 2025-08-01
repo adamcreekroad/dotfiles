@@ -5,26 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(
-  bundler
-  dotenv
-  fzf
-  git
-  gh
-  golang
-  mise
-  node
-  postgres
-  rails
-  rake
-  ruby
-  rust
-  ssh
-  ssh-agent
-  sudo
-  systemd
-  zsh-autosuggestions
-)
+plugins=(bundler dotenv fzf git gh golang mise node rails rake ruby rust ssh ssh-agent sudo systemd zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,3 +70,11 @@ gpgconf --launch gpg-agent
 
 eval "$(~/.local/bin/mise activate zsh)"
 
+
+# pnpm
+export PNPM_HOME="/home/adam/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -57,10 +57,22 @@ map("n", "<C-Up>", "<C-w>+")
 map("n", "<C-Down>", "<C-w>-")
 
 -- Test
-map("n", "<leader>t", "<CMD>TestNearest<CR>")
-map("n", "<leader>T", "<CMD>TestFile<CR>")
-map("n", "<leader>a", "<CMD>TestSuite<CR>")
-map("n", "<leader>l", "<CMD>TestLast<CR>")
+map("n", "<leader>t", function()
+  local neotest = require("neotest")
+
+  neotest.run.run()
+  neotest.run.attach()
+end)
+map("n", "<leader>T", function()
+  local neotest = require('neotest')
+
+  neotest.run.run(vim.fn.expand('%'))
+  neotest.run.attach()
+end)
+map("n", "<leader>TS", "<CMD>lua require('neotest').run.run({ suite = true })<CR>")
+map("n", "<leader>td", "<CMD>lua require('neotest').run.run({strategy = 'dap'})<CR>")
+map("n", "<leader>ts", "<CMD>lua require('neotest').run.stop()<CR>")
+map("n", "<leader>ta", "<CMD>lua require('neotest').run.attach()<CR>")
 map("n", "<leader>g", "<CMD>TestVisit<CR>")
 
 -- Toggle LSP diagnostics
@@ -76,4 +88,10 @@ map("n", "<leader>gv", function()
 end, opts)
 
 
+-- Exit terminal mode with `esc`
 map("t", "<esc>", "<C-\\><C-n>")
+
+-- Copy current file path to clipboard
+map("n", "<leader>yp", "<cmd>let @+ = expand('%:~:.')<cr>")
+
+map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>")

@@ -33,3 +33,4 @@ o.inccommand =
 "split"                     -- When nonempty, shows the effects of :substitute, :smagic, :snomagic and user commands with the :command-preview flag as you type.
 -- o.splitbelow = "splitright" -- When on, splitting a window will put the new window below the current one
 o.colorcolumn = "120"
+o.winborder = 'rounded'
