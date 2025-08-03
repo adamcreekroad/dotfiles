@@ -27,6 +27,18 @@ function link_dir()
   fi
 }
 
+# Returns the config file for the corresponding host, otherwise generic config based on whether or not we're in WSL
+function fetch_wezterm_config()
+{
+  if [ -f "$PWD/wezterm/.wezterm.$HOST.lua" ]; then
+    echo $PWD/wezterm/.wezterm.$HOST.lua
+  elif which wslpath &> /dev/null; then
+    echo $PWD/wezterm/.wezterm.wsl.lua
+  else
+    echo $PWD/wezterm/.wezterm.lua
+  fi
+}
+
 link_file $PWD/zsh/.zshrc $HOME/.zshrc
 
 # Copy wezterm config
@@ -34,9 +46,13 @@ link_file $PWD/zsh/.zshrc $HOME/.zshrc
 # Windows itself.
 if which wslpath &> /dev/null; then
   win_home=$(wslpath "$(wslvar USERPROFILE)")
-  cp -rf $PWD/wezterm/.wezterm.wsl.lua  $win_home/.wezterm.lua
+  config=$(fetch_wezterm_config)
+
+  cp -rf $config $win_home/.wezterm.lua
 else
-  link_file $PWD/wezterm/.wezterm.lua $HOME/.wezterm.lua
+  config=$(fetch_wezterm_config)
+
+  link_file $config $HOME/.wezterm.lua
 fi
 
 link_file $PWD/mise/.default-gems $HOME/.default-gems
