@@ -1,1 +1,2 @@
-require "autocommands.ruby"
+require("autocommands.spellcheck")
+require("autocommands.ruby")

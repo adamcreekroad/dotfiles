@@ -34,3 +34,8 @@ o.inccommand =
 -- o.splitbelow = "splitright" -- When on, splitting a window will put the new window below the current one
 o.colorcolumn = "120"
 o.winborder = 'rounded'
+
+vim.cmd("colorscheme dracula")
+
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+

@@ -1,4 +1,4 @@
--- left out from lspzero: cssls, graphql, html, eslint
+-- left out from lspzero: cssls, html, eslint
 vim.lsp.enable({ "pylsp", "gopls", "lua_ls", "rust_analyzer", "ts_ls", "solargraph", "jsonls", "graphql" })
 
 vim.diagnostic.config({

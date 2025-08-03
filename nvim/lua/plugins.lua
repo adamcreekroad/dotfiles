@@ -29,7 +29,7 @@ return require("packer").startup(function(use)
   -- Icons
   use("nvim-tree/nvim-web-devicons")
 
-  -- Colorschema
+  -- Color scheme
   use("rebelot/kanagawa.nvim")
   use({
     "olimorris/onedarkpro.nvim",
