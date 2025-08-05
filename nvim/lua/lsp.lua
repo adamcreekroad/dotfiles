@@ -56,8 +56,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
               vim.lsp.buf.code_action({ context = ctx, apply = true })
             end
           end
+          -- apply_code_action({ "source.AddMissingImports" })
+          -- apply_code_action({ "source.organizeImports" })
           apply_code_action({ "source.fixAll" })
-          apply_code_action({ "source.organizeImports" })
         end
       end,
     })
