@@ -12,7 +12,6 @@ vim.diagnostic.config({
     },
   },
   virtual_text = true,
-  float = { border = "border" },
 })
 
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
