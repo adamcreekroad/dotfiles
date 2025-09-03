@@ -33,8 +33,7 @@ alias be='bundle exec'
 function gprune()
 {
   git fetch --prune
-  merged_branches=$(git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}')
-  git branch -D $merged_branches
+  git branch -D $(git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}')
 }
 
 # Hard reset the current local branch to match remote. Necessary when the remote branch has been force pushed.
