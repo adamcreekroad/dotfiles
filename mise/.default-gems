@@ -1,9 +1,7 @@
 bundler
-rbs
 rubocop
 rubocop-performance
 rubocop-rails
 rubocop-rspec
 solargraph
-solargraph-rails
-steep
+tmuxinator

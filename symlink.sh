@@ -63,5 +63,7 @@ link_dir $PWD/nvim $HOME/.config/nvim
 
 link_file $PWD/git/.gitconfig $HOME/.gitconfig
 
+link_file $PWD/tmux/.tmux.conf $HOME/.tmux.conf
+
 # Needs sudo...
 # link_files_in_dir $PWD/bin /usr/local/bin
