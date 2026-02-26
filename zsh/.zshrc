@@ -26,6 +26,7 @@ export RUBY_YJIT_ENABLE='true'
 
 alias g='git'
 alias be='bundle exec'
+alias mux='tmuxinator'
 
 # Functions
 
