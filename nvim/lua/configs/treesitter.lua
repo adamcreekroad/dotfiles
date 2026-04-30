@@ -7,6 +7,9 @@ ts.setup({
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+    disable = {
+      "dockerfile" -- doesn't quite work right...
+    }
   },
   context_commentstring = {
     enable = true,
@@ -35,6 +38,7 @@ ts.setup({
     "scss",
     "slim",
     "sql",
+    "terraform",
     "toml",
     "tsx",
     "typescript",

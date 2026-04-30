@@ -6,7 +6,8 @@ vim.filetype.add({
   }
 })
 
-vim.lsp.enable({ "pylsp", "gopls", "lua_ls", "rust_analyzer", "ts_ls", "solargraph", "jsonls", "graphql", "bashls" })
+vim.lsp.enable({ "pylsp", "gopls", "lua_ls", "rust_analyzer", "ts_ls", "solargraph", "jsonls", "graphql", "bashls",
+  "terraformls" })
 
 vim.diagnostic.config({
   signs = {
