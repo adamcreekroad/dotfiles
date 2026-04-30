@@ -2,12 +2,12 @@ return {
   cmd = { "solargraph", "stdio" },
   filetypes = { "ruby" },
   init_options = {
-    formatting = true
+    formatting = false
   },
   root_markers = { "Gemfile", ".git" },
   settings = {
-    -- solargraph = {
-    --   diagnostics = false
-    -- }
+    solargraph = {
+      diagnostics = false
+    }
   },
 }
