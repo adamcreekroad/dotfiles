@@ -81,11 +81,10 @@ return require("packer").startup(function(use)
 
   -- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
-  -- Telescope
+  -- Search
   use({
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    requires = { { "nvim-lua/plenary.nvim" } },
+    "ibhagwan/fzf-lua",
+    requires = { "nvim-tree/nvim-web-devicons" },
   })
 
   -- File manager
