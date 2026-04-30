@@ -4,12 +4,27 @@ if which apt &> /dev/null; then
   OS='DEB Linux'
 elif which dnf &> /dev/null; then
   OS='RPM Linux'
+elif [[ "$(uname -s)" = "Darwin" ]]; then
+  OS='Darwin'
 else
   echo "Not a supported OS!"
   exit 1
 fi
 
 echo "Detected $OS, continuing..."
+
+# Setup ZSH
+echo "Setting up ZSH plugins"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Install homebrew
+if [[ "$OS" = "Darwin" && -v $(which brew &> /dev/null) ]]; then
+  echo "Installing homebrew..."
+
+  /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  echo "done!"
+fi
 
 # Install mise-en-place
 if which mise &> /dev/null; then
@@ -35,8 +50,10 @@ else
 fi
 
 # Install ruby
-if which ruby &> /dev/null; then
-  echo "ruby already installed"
+
+RUBY_VERSION="$(mise ls ruby | awk '{print $2}')"
+if [[ -n "$RUBY_VERSION" ]]; then
+  echo "ruby $RUBY_VERSION already installed"
 else
   echo "installing ruby..."
 
@@ -44,6 +61,8 @@ else
     sudo dnf install -y jemalloc-devel libffi-devel libyaml-devel
   elif [[ "$OS" == "DEB Linux" ]]; then
     sudo apt install -y libjemalloc-dev libffi-dev libyaml-dev
+  elif [[ "$OS" == "Darwin" ]]; then
+    brew install jemalloc libyaml
   fi
 
   if [[ $? -ne 0 ]]; then
@@ -93,6 +112,8 @@ else
     sudo /usr/bin/postgresql-setup --initdb
     sudo systemctl enable postgresql
     sudo systemctl start postgresql
+  elif [[ "$OS" == "Darwin" ]]; then
+    brew install postgres
   fi
 
   echo "done!"
@@ -104,9 +125,13 @@ if which redis-cli &> /dev/null; then
 else
   echo "installing redis"
   
-  sudo dnf install -y redis
-  sudo systemctl enable redis
-  sudo systemctl start redis
+  if [[ "$OS" == "RPM Linux" ]]; then
+	  sudo dnf install -y redis
+	  sudo systemctl enable redis
+	  sudo systemctl start redis
+  elif [[ "$OS" == "Darwin" ]]; then
+    brew install valkey
+  fi
 
   echo "done!"
 fi

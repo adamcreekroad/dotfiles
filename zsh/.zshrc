@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # oh-my-zsh
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -18,6 +20,13 @@ export BROWSER=ff
 
 # Compilation flags
 
+# When on macOS, libraries installed via homebrew may not automatically be picked up
+if [ "$(uname -s)" = "Darwin" ]; then
+  export HOMEBREW_PREFIX=$(brew --prefix)
+  export CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/include"
+  export LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/lib"
+fi
+
 export RUBY_CONFIGURE_OPTS='--with-jemalloc --enable-yjit'
 export RUBY_YJIT_ENABLE='true'
 
@@ -27,6 +36,7 @@ export RUBY_YJIT_ENABLE='true'
 alias g='git'
 alias be='bundle exec'
 alias mux='tmuxinator'
+
 
 # Functions
 

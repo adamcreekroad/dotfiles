@@ -30,8 +30,8 @@ function link_dir()
 # Returns the config file for the corresponding host, otherwise generic config based on whether or not we're in WSL
 function fetch_wezterm_config()
 {
-  if [ -f "$PWD/wezterm/.wezterm.$HOST.lua" ]; then
-    echo $PWD/wezterm/.wezterm.$HOST.lua
+  if [ -f "$PWD/wezterm/.wezterm.${HOST%.local}.lua" ]; then
+    echo $PWD/wezterm/.wezterm.${HOST%.local}.lua
   elif which wslpath &> /dev/null; then
     echo $PWD/wezterm/.wezterm.wsl.lua
   else
