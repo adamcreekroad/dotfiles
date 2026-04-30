@@ -47,6 +47,17 @@ return require("packer").startup(function(use)
     end,
   })
 
+  use({
+    "fnune/codeactions-on-save.nvim",
+    config = function()
+      local cos = require("codeactions-on-save")
+
+      cos.register({ "*.go" }, { "source.organizeImports", "source.fixAll" })
+      cos.register({ "*.ts", "*.tsx" },
+        { "source.addMissingImports.ts", "source.organizeImports.ts", "source.fixAll.ts" })
+    end
+  })
+
   -- Statusline
   use({
     "nvim-lualine/lualine.nvim",
@@ -112,6 +123,7 @@ return require("packer").startup(function(use)
       require("configs.gitsigns")
     end,
   })
+  use("rhysd/conflict-marker.vim")
 
   -- Markdown Preview
   use({
