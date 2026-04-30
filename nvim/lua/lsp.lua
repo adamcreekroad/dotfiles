@@ -54,20 +54,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
         end
 
-        if client:supports_method("textDocument/codeAction") then
-          local function apply_code_action(action_type)
-            local ctx = { only = action_type, diagnostics = {} }
-            local actions = vim.lsp.buf.code_action({ context = ctx, apply = true, return_actions = true })
-
-            -- only apply if code action is available
-            if actions and #actions > 0 then
-              vim.lsp.buf.code_action({ context = ctx, apply = true })
-            end
-          end
-          -- apply_code_action({ "source.AddMissingImports" })
-          -- apply_code_action({ "source.organizeImports" })
-          apply_code_action({ "source.fixAll" })
-        end
+        -- if client:supports_method("textDocument/codeAction") then
+        --   local function apply_code_action(action_type)
+        --     local ctx = { only = action_type, diagnostics = {} }
+        --     local actions = vim.lsp.buf.code_action({ context = ctx, apply = true, return_actions = true })
+        --
+        --     -- only apply if code action is available
+        --     if actions and #actions > 0 then
+        --       vim.lsp.buf.code_action({ context = ctx, apply = true })
+        --       vim.wait(100)
+        --     end
+        --   end
+        --
+        --   apply_code_action({ "source.addMissingImports" })
+        --   apply_code_action({ "source.organizeImports" })
+        --   apply_code_action({ "source.fixAll" })
+        -- end
       end,
     })
   end,
