@@ -8,6 +8,8 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
+config.scrollback_lines = 50000
+
 -- For example, changing the color scheme:
 config.color_scheme = 'Dracula'
 config.font = wezterm.font 'CaskaydiaCove Nerd Font'
@@ -64,6 +66,11 @@ config.keys = {
       end),
     },
   },
+  {
+    key = 'G',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ScrollToTop,
+  }
 }
 
 -- and finally, return the configuration to wezterm
