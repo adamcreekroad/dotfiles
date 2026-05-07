@@ -1,8 +1,14 @@
 -- left out from lspzero: cssls, html, eslint
 
 vim.filetype.add({
-  pattern = {
-    ['.*/*.thor'] = 'ruby',
+  extension = {
+    thor = 'ruby',
+  }
+})
+
+vim.filetype.add({
+  extension = {
+    tmpl = 'gotmpl'
   }
 })
 
