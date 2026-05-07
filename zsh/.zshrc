@@ -11,6 +11,10 @@ plugins=(bundler dotenv fzf git gh golang mise node rails rake ruby rust ssh ssh
 
 source $ZSH/oh-my-zsh.sh
 
+# Path
+
+export PATH="/usr/local/bin:$PATH"
+
 
 # User Configuration
 
