@@ -12,6 +12,13 @@ vim.filetype.add({
   }
 })
 
+-- I don't use TinyFugue, so force all `.tf` as terraform
+vim.filetype.add({
+  extension = {
+    tf = 'terraform'
+  }
+})
+
 vim.lsp.enable({
   "bashls",
   "gopls",
