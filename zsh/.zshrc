@@ -7,7 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(bundler dotenv fzf git gh golang mise node rails rake ruby rust ssh ssh-agent sudo systemd zsh-autosuggestions)
+plugins=(bundler docker dotenv fzf git gh golang mise node rails rake ruby rust ssh ssh-agent sudo systemd zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
