@@ -43,8 +43,12 @@ return require("packer").startup(function(use)
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("ibl").setup()
+      require("configs.indent-blankline")
     end,
+  })
+
+  use({
+    "HiPhish/rainbow-delimiters.nvim"
   })
 
   use({
@@ -68,19 +72,6 @@ return require("packer").startup(function(use)
     requires = { "nvim-web-devicons" },
   })
 
-  -- Treesitter
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
-    end,
-    config = function()
-      require("configs.treesitter")
-    end,
-  })
-
-  -- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
-
   -- Search
   use({
     "ibhagwan/fzf-lua",
@@ -99,12 +90,12 @@ return require("packer").startup(function(use)
   })
 
   -- Show colors
-  use({
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "*" })
-    end,
-  })
+  --  use({
+  --    "norcalli/nvim-colorizer.lua",
+  --    config = function()
+  --      require("colorizer").setup({ "*" })
+  --    end,
+  --  })
 
   -- Terminal
   use({
@@ -153,7 +144,6 @@ return require("packer").startup(function(use)
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
     },
     config = function()

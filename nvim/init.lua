@@ -3,4 +3,5 @@ require("settings")
 require("maps")
 require("lsp")
 require("autocommands")
+require("configs.treesitter")
 

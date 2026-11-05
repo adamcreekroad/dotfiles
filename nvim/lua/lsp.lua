@@ -23,6 +23,7 @@ vim.lsp.enable({
   "bashls",
   "gopls",
   "graphql",
+  "html",
   "jsonls",
   "lua_ls",
   "postgres_lsp",

@@ -19,8 +19,12 @@ export PATH="/usr/local/bin:$PATH"
 # User Configuration
 
 export EDITOR=nvim
-export BROWSER=ff
 
+if [ "$(uname -s)" = "Darwin" ]; then
+  export BROWSER=/Applications/Firefox.app/Contents/MacOS/firefox
+else
+  export BROWSER=ff
+fi
 
 # Compilation flags
 
@@ -88,8 +92,8 @@ eval "$(~/.local/bin/mise activate zsh)"
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 

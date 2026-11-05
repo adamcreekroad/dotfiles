@@ -1,8 +1,7 @@
-local status, ts = pcall(require, "nvim-treesitter")
-if not status then
-  return
-end
-
+-- Native treesitter (Neovim 0.12+) — no plugin needed since nvim-treesitter
+-- was archived (April 2026).
+--   Parsers: ~/.local/share/nvim/site/parser/*.so, built by scripts/install-parsers.sh
+--   Queries: vendored under nvim/queries/
 
 local parsers = {
   "bash",
@@ -33,82 +32,26 @@ local parsers = {
   "yaml",
 }
 
-ts.install(parsers)
-
+-- Filetypes whose parser goes by a different name
+vim.treesitter.language.register("bash", { "sh", "zsh" })
+vim.treesitter.language.register("tsx", "typescriptreact")
 
 local ignore_filetypes = {
-  'dockerfile' -- Doesn't work quite right...
+  "dockerfile", -- Doesn't work quite right...
 }
 
-vim.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("NativeTreesitter", { clear = true }),
   callback = function(event)
     if vim.tbl_contains(ignore_filetypes, event.match) then
       return
     end
 
-    if not vim.tbl_contains(parsers, event.match) then
+    local lang = vim.treesitter.language.get_lang(event.match) or event.match
+    if not vim.tbl_contains(parsers, lang) then
       return
     end
 
-    local ok = pcall(function()
-      vim.treesitter.start(event.buf)
-    end)
-    if not ok then
-    end
+    pcall(vim.treesitter.start, event.buf, lang)
   end,
 })
-
---ts.setup({
---  highlight = {
---    enable = true,
---    additional_vim_regex_highlighting = false,
---    disable = {
---      "dockerfile" -- doesn't quite work right...
---    }
---  },
---  context_commentstring = {
---    enable = true,
---    enable_autocmd = false,
---  },
---  ensure_installed = {
---    "bash",
---    "c",
---    "cpp",
---    "css",
---    "dockerfile",
---    "go",
---    "graphql",
---    "html",
---    "javascript",
---    "json",
---    "liquid",
---    "lua",
---    "markdown",
---    "nginx",
---    "python",
---    "rbs",
---    "regex",
---    "ruby",
---    "rust",
---    "scss",
---    "slim",
---    "sql",
---    "terraform",
---    "toml",
---    "tsx",
---    "typescript",
---    "yaml",
---  },
---  rainbow = {
---    enable = true,
---    disable = { "html" },
---    extended_mode = false,
---    max_file_lines = nil,
---  },
---  autotag = { enable = true },
---  incremental_selection = { enable = true },
---  indent = { enable = true },
---})
---
---local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
---parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }

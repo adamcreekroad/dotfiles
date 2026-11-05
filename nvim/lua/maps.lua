@@ -14,6 +14,13 @@ else
   print("fzf-lua not found")
 end
 
+map("c", "<M-b>", "<S-Left>")
+map("c", "<M-f>", "<S-Right>")
+map("c", "<C-a>", "<Home>")
+map("c", "<C-e>", "<End>")
+map("c", "<C-f>", "<Right>")
+map("c", "<C-b>", "<Left>")
+
 -- Save
 map("n", "<leader>w", "<CMD>update<CR>")
 
@@ -103,5 +110,5 @@ function rfs()
   pos[1] = pos[1] + 2
   vim.api.nvim_win_set_cursor(0, pos)
 end
-vim.api.nvim_set_keymap('n', '<leader>rfs', '<cmd>lua rfs()<cr>', {})
 
+vim.api.nvim_set_keymap('n', '<leader>rfs', '<cmd>lua rfs()<cr>', {})
